@@ -1,0 +1,43 @@
+-- Trigger
+
+CREATE TABLE person_audit (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    PersonId INT NOT NULL,
+    FirstName VARCHAR(255) NOT NULL,
+    LastName VARCHAR(255) NOT NULL,
+    UpdatedAt DATETIME DEFAULT NULL
+);
+
+CREATE TRIGGER before_person_update 
+    BEFORE UPDATE ON person
+    FOR EACH ROW 
+ INSERT INTO person_audit
+ SET PersonId = OLD.Id,
+     FirstName = OLD.FirstName,
+     LastName = OLD.LastName,
+     UpdatedAt = NOW();
+
+-- Test trigger
+
+UPDATE person as p
+SET p.FirstName = 'Aro'
+WHERE p.Id = 1
+
+-- Stored procedure
+
+DELIMITER //
+
+CREATE PROCEDURE GetOrderItems()
+BEGIN
+	SELECT op.Id, prod.Name, prod.Price, cat.Name, per.FirstName, per.LastName FROM orderproduct as op
+    INNER JOIN orders as o ON op.OrderId = o.Id
+    INNER JOIN product as prod ON op.ProductId = prod.Id
+    INNER JOIN person as per ON o.PersonId = per.Id
+    INNER JOIN category as cat ON prod.CategoryId = cat.Id;
+END //
+
+DELIMITER ;
+
+-- Test stored procedure
+
+CALL GetOrderItems();
