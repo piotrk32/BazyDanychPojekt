@@ -3,7 +3,3 @@ klientów firmy zajmującej się obsługą zamówień w sklepie internetowym
 oraz relacji zachądzących między poszczególnymi elementami bazy danych.
 
 
-Ps
-Jeżeli którychś elementów brakuje lub popełniłem jakieś rażące błędy
-proszę o wyrozumiałość z uwagi na brak utrwalonej wiedzy w 
-obcowaniu z Workbenchem.
