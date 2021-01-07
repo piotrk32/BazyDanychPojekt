@@ -1,5 +1,5 @@
 Projekt przechowuje dane dotyczące produktow, 
-klientów firmy zajmującej się obsługą zamówień 
+klientów firmy zajmującej się obsługą zamówień w sklepie internetowym
 oraz relacji zachądzących między poszczególnymi elementami bazy danych.
 
 
